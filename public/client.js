@@ -3,6 +3,7 @@ const socket = io() // creates a new connection
 let userName;
 let textarea = document.querySelector("#textarea")
 let msgarea = document.querySelector(".messageArea")
+let sendButton = document.querySelector("#sendBtn");
 
 do {
     userName = prompt("Enter your name:")
@@ -11,24 +12,32 @@ do {
 textarea.addEventListener('keyup', (e) => {
     if (e.key === "Enter") {
         sendMessage(e.target.value)
+        textarea.value="";
     }
 })
 
 
+sendButton.addEventListener('click', () => {
+    sendMessage(textarea.value);
+    textarea.value = ""; 
+});
+
+
 function sendMessage(message) {
+
+    if (!message.trim()) {
+        return; // Don't send empty messages
+    }
+
     let msg = {
         user: userName,
-        message: message.trim()
+        message: message.trim() // to trim spaces before and after text
     }
     appendMessage(msg, "outgoingMsg")
 
 
     // send to server now we can listen
     socket.emit("message", msg)
-
-
-
-
 }
 
 function appendMessage(msg, type) {
@@ -47,7 +56,7 @@ function appendMessage(msg, type) {
 }
 
 
-// recieve
+// Listens for message events from the server. 
 
 socket.on("message", msg=>{
     // console.log(msg)

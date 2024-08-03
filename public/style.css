@@ -48,6 +48,24 @@ textarea {
     background: #FBFBFB;
 }
 
+
+button#sendBtn {
+    border: none;
+    padding: 10px 20px;
+    color: #1A3636;
+    background-color: rgb(138, 237, 176);
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+button#sendBtn:hover {
+    background-color:rgb(25, 158, 76);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .message {
     padding: 20px; 
     border-radius: 4px; 
@@ -55,13 +73,17 @@ textarea {
     max-width: 300px;
     position: relative;
 }
+
+
 .incomingMsg {
-    background: #8F8BE8;
-    color: #fff;  
+    color: #201E43;
+    background-color: #E2DAD6; 
 }
+
+
 .outgoingMsg {
-    background: #e9eafd;
-    color: #787986;
+    color: #1A3636;
+    background-color:rgb(138, 237, 176);
     margin-left: auto;
 }
 .message h4 {
